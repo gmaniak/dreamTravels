@@ -1,0 +1,59 @@
+body,h1,h2,h3,h4,h5,h6 {
+	font-family: "Raleway",Arial, Helvetica, sans-serif
+}
+
+body {
+	background: linear-gradient(to right, #DBDBDB, #EAEAEA);
+}
+
+
+.header-container{
+	position: relative;
+}
+
+.reservation-container{
+	position: absolute;
+	bottom: 25%;
+	left:5%;
+}
+
+.name{
+	background-color: #f05053;
+	color: white;
+}
+
+.bg-red{
+	background-color: #f05053;
+}
+
+.bg-img
+{
+	min-width:1000px;
+	overflow: hidden;
+	width:100%;
+	height: auto;
+	object-fit: none;
+	object-position: center;
+    box-sizing: inherit;
+}
+
+.bg-white{
+	background-color: white;
+	padding: 0px;
+	margin:0px;
+}
+
+.form-custom{
+	padding: 20px;
+}
+
+.about{
+	padding-top:50px;
+}
+
+.contact{
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+
