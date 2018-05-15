@@ -57,11 +57,10 @@ function load_page() {
         img.onclick = reserve(hotel_ids[i]);
         div.appendChild(img);
 
-        /*Create div for inner content and add it*/
+        /*Create div for inner content*/
         cardBody = document.createElement("div");
         div.classList.add("card-body");
-      	div.appendChild(cardBody);
-
+      	
         next_params["town"] = location["town"];
         next_params["county"] = location["county"];
         next_params["country"] = location["country"];
@@ -111,7 +110,7 @@ function load_page() {
 
         // td.appendChild(a);
 
-
+        div.appendChild(cardBody);
         /*Append card to container*/
         $("hotel-container").append(div);
     }
