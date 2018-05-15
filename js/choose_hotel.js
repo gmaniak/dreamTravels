@@ -78,6 +78,7 @@ function load_page() {
         /*Create div for inner content*/
         cardBody = document.createElement("div");
         cardBody.classList.add("card-body");
+        card-body.classList.add("custom-container");
         
       	
         next_params["town"] = location["town"];
@@ -105,7 +106,6 @@ function load_page() {
 
         /*Create discover BTN*/
         var discoverContainer = document.createElement("div");
-        discoverContainer.classList.add("custom-btn-container");
 
         var discoverButton;
         discoverButton = document.createElement("a");
