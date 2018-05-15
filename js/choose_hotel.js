@@ -103,6 +103,9 @@ function load_page() {
                                 room["price"] + " lei per night)";
         cardBody.appendChild(totalPrice);
 
+        /*Create discover BTN*/
+        var discoverContainer = document.createElement("div");
+        discoverContainer.classList.add("custom-btn-container");
 
         var discoverButton;
         discoverButton = document.createElement("a");
@@ -113,7 +116,8 @@ function load_page() {
         discoverButton.href = './hotel_pages/' + hotel.name.replace(/ /g, '_') + 
         						".html?" + encodeURIComponent(JSON.stringify(next_params));
         
-        cardBody.appendChild(discoverButton);
+        discoverContainer.appendChild(discoverButton);
+        cardBody.appendChild(discoverContainer);
 
         div.appendChild(cardBody);
         /*Append card to container*/
