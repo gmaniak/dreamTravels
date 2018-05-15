@@ -8,18 +8,43 @@ function set_preferences() {
 	var date_out = new Date(document.getElementById('out').value);
   	var params = "?";
   	var radios = document.getElementsByName('no');
-	        
+	
+  	if(document.getElementById('in').value == ""){
+		 document.getElementById("demo3").innerHTML = "Please select a date for Check In";
+		 return;
+	}
+	if(document.getElementById('out').value == ""){
+		 document.getElementById("demo3").innerHTML = "Please select a date for Check Out";
+		 return;
+	}
+	if(date_in > date_out){
+  		document.getElementById("demo3").innerHTML = "Check In date higher than Check Out date";
+  		return;
+	}
+	if(document.getElementById('location').value == ""){
+		 document.getElementById("demo3").innerHTML = "Please select a location";
+		 return;
+	}
+	if (/^[a-zA-Z]+$/.test(location) == false){
+		document.getElementById("demo3").innerHTML = "Please give a valid location";
+		return;
+	}
+	location = location.charAt(0).toUpperCase() + location.slice(1).toLowerCase();
     for (j in radios)
 	 if (radios[j].checked) {
 	  no_pers = radios[j].value;
 	  break;
 	 }
+	if(no_pers == 0){
+		document.getElementById("demo3").innerHTML = "Please select number of persons";
+		return;
+	}
 
 	params = params + "in=" + date_in.getFullYear() + "-" + (date_in.getMonth() + 1) +
 			"-" + date_in.getDate() + "&";
 	params = params + "out=" + date_out.getFullYear() + "-" + (date_out.getMonth() + 1) +
 			"-" + date_out.getDate() + "&";
-	var ok = 1;
+	var ok2 = 1;
   	get_loc_ids(location).done(function (data) {
       if(!('message' in data) ) {
           for (i in data.records)
@@ -27,7 +52,7 @@ function set_preferences() {
       }
       else {
           document.getElementById("demo3").innerHTML = "Sorry, we can provide no accomodation in this location."
-		  ok = 0;
+		  ok2 = 0;
       }
 	});
 
@@ -37,60 +62,63 @@ function set_preferences() {
         for (j in data.records)
         	hot_arr.push(data.records[j].id);
         }
-        else {
-          console.log(data.message);
-        }
       });
 	}
-	for (j in hot_arr) {
-	  get_room_ids(hot_arr[j]).done(function (data) {
-	      if(!('message' in data) ) {
-	        for (k in data.records)
-	          if (parseInt(data.records[k].type) == no_pers)
-	        	room_arr.push(data.records[k].id);
-	        }
-	        else {
-	          console.log(data.message);
-	        }
+	if(hot_arr.length == 0){
+		document.getElementById("demo3").innerHTML = "Sorry, we can provide no accomodation in this location."
+		ok2 = 0;
+	}
+	else{
+		for (j in hot_arr) {
+		  get_room_ids(hot_arr[j]).done(function (data) {
+		      if(!('message' in data) ) {
+		        for (k in data.records)
+		          if (parseInt(data.records[k].type) == no_pers)
+		        	room_arr.push(data.records[k].id);
+		        }
+		        else {
+		          console.log(data.message);
+		        }
 
-	     for (k in room_arr) {
-	      var ok = 1;
-	      get_reserv_ids(room_arr[k]).done(function (data) {
-	       if(!('message' in data) ) {
-	        for (l in data.records) {
-	        	var start = new Date(data.records[l].start_date);
-	        	var end = new Date(data.records[l].end_date);
+		     for (k in room_arr) {
+		      var ok = 1;
+		      get_reserv_ids(room_arr[k]).done(function (data) {
+		       if(!('message' in data) ) {
+		        for (l in data.records) {
+		        	var start = new Date(data.records[l].start_date);
+		        	var end = new Date(data.records[l].end_date);
 
-	        	if (start < date_in && end > date_in)
-	        		ok = 0;
+		        	if (start < date_in && end > date_in)
+		        		ok = 0;
 
-	        	if (start < date_out && end > date_out)
-	        		ok = 0;
+		        	if (start < date_out && end > date_out)
+		        		ok = 0;
 
-	        	if (start > date_in && end < date_out)
-	        		ok = 0;
+		        	if (start > date_in && end < date_out)
+		        		ok = 0;
 
-	        	if (ok == 1) {
-	        		params = params + "hotel=" + hot_arr[j] + "&room=" + room_arr[k] + "&";
-	        		break;
-	        	}
-	          }
-	        }
-	       
-	        else {
-	       	   params = params + "hotel=" + hot_arr[j] + "&room=" + room_arr[k] + "&";
-	        }
-	      });
-	      if (ok == 1)
-	      	break;
+		        	if (ok == 1) {
+		        		params = params + "hotel=" + hot_arr[j] + "&room=" + room_arr[k] + "&";
+		        		break;
+		        	}
+		          }
+		        }
+		       
+		        else {
+		       	   params = params + "hotel=" + hot_arr[j] + "&room=" + room_arr[k] + "&";
+		        }
+		      });
+		      if (ok == 1)
+		      	break;
+		    }
+	     });
+		 room_arr = [];
 	    }
-     });
-	 room_arr = [];
-    }
-	     
-	if (ok == 1) {
-		params = params.slice(0, params.length - 1);
-		window.location.href = "./choose_hotel.html" + params;
+		     
+		if (ok2 == 1) {
+			params = params.slice(0, params.length - 1);
+			window.location.href = "./choose_hotel.html" + params;
+		}
 	}
   }
 

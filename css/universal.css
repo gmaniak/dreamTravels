@@ -58,10 +58,14 @@ body {
 
 .hotel-card{
 	width: 375px;
+	-webkit-filter: brightness(90%);
+
 }
 
+
+
 .hotel-card:hover{
-	-webkit-filter: brightness(150%);
+	-webkit-filter: brightness(110%);
 	cursor: pointer;
 }
 
