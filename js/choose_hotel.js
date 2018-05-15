@@ -78,7 +78,7 @@ function load_page() {
         /*Create div for inner content*/
         cardBody = document.createElement("div");
         cardBody.classList.add("card-body");
-        card-body.classList.add("custom-container");
+        cardBody.classList.add("custom-container");
         
       	
         next_params["town"] = location["town"];
