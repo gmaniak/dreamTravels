@@ -70,5 +70,6 @@ body {
 }
 
 .custom-btn {
-	width: 200px;
+	width: 250px;
+	align-self: center;
 }
