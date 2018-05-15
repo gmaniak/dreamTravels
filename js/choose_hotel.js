@@ -91,7 +91,7 @@ function load_page() {
         next_params["email"] = hotel["email"];
 
         /*Create div for Row buttons*/
-        var rowDiv = document.createElement(div);
+        var rowDiv = document.createElement("div");
         rowDiv.classList.add("row");
 
         /*Create Hotel Name*/
