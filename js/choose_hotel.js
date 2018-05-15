@@ -16,18 +16,17 @@ function load_page() {
 			room_ids.push(params[i].split("=")[1]);
 	}
 
-	var tbl = document.createElement('table');
-	var body = document.body;
+	var div;
+	var cardBody
 	var hotel;
 	var location_id;
 	var location;
 	var next_params = {};
 
 	for(i = 0; i < hotel_ids.length; i++) {
-        var tr = tbl.insertRow();
-        var td = tr.insertCell();
         td.onclick = reserve(hotel_ids[i]);
         
+        /*Get Data*/
         get_hotel(hotel_ids[i]).done(function (data) {
         	if(!('message' in data) ) {
         		location_id = data["location_id"];
@@ -47,14 +46,22 @@ function load_page() {
 	        }
         })
 
-        td.appendChild(document.createTextNode(hotel.name));
+        /*Create Card Element*/
+        div = createElement("div");
+        div.classList.add("card");
+        div.classList.add("hotel-card");
 
+        /*Create Img for card*/
         var img = document.createElement('img');
         img.src = './img/' + hotel.name.replace(/ /g, '_') + ".jpg";
-        img.height = 150;
-        img.width = 200;
         img.alt = hotel.name.replace(/ /g, '_') + ".jpg";
-        td.appendChild(img);
+        img.onclick = reserve(hotel_ids[i]);
+        div.appendChild(img);
+
+        /*Create div for inner content and add it*/
+        cardBody = createElement("div");
+        div.classList.add("card-body");
+      	div.appendChild(cardBody);
 
         next_params["town"] = location["town"];
         next_params["county"] = location["county"];
@@ -64,17 +71,51 @@ function load_page() {
         next_params["phone"] = hotel["phone"];
         next_params["email"] = hotel["email"];
 
-        var td = tr.insertCell();
-        var a = document.createElement('a');
-        a.appendChild(document.createTextNode('Discover the hotel!'));
-        a.title = 'Discover the hotel!';
-        a.href = './hotel_pages/' + hotel.name.replace(/ /g, '_') + 
-        						".html?" + encodeURIComponent(JSON.stringify(next_params));
-        a.target = '_blank';
+        /*Create Hotel Name*/
+        var hotelName;
+        hotelName = createElement("h5");
+        hotelName.classList.add("card-title");
+        hotelName.innerHTML = hotel.name;
+        cardBody.appendChild(hotelName);
 
-        td.appendChild(a);
+        /*Create buttons*/
+        var reserveBtn;
+        reserveBtn = createElement("button");
+        reserveBtn.type = "btn";
+        reserveBtn.classList.add("btn");
+        reserveBtn.classList.add("btn-danger");
+        reserveBtn.onclick = reserve(hotel_ids[i]);
+        reserveBtn.innerHTML = "Reserve";
+        cardBody.appendChild(reserveBtn);
+
+        /*Add Discover Button*/
+        var discoverButton;
+        var href;
+        discoverButton - createElement("button");
+        discoverButton.innerHTML = "Discover Hotel";
+        discoverButton.classList.add("btn-danger");
+        discoverButton.classList.add("btn");
+        href = './hotel_pages/' + hotel.name.replace(/ /g, '_') + 
+        						".html?" + encodeURIComponent(JSON.stringify(next_params));
+
+        discoverButton.onclick = "window.location.href='"+href+"'";
+        cardBody.appendChild(discoverButton);
+
+
+        // var td = tr.insertCell();
+        // var a = document.createElement('a');
+        // a.appendChild(document.createTextNode('Discover the hotel!'));
+        // a.title = 'Discover the hotel!';
+        // a.href = './hotel_pages/' + hotel.name.replace(/ /g, '_') + 
+        // 						".html?" + encodeURIComponent(JSON.stringify(next_params));
+        // a.target = '_blank';
+
+        // td.appendChild(a);
+
+
+        /*Append card to container*/
+        $("hotel-container").append(div);
     }
-    body.appendChild(tbl);
 
     function get_hotel(id) {
   	 return $.ajax({
