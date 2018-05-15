@@ -112,7 +112,7 @@ function load_page() {
 
         div.appendChild(cardBody);
         /*Append card to container*/
-        $("hotel-container").append(div);
+        $("#hotel-container").append(div);
     }
 
     function get_hotel(id) {
