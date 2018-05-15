@@ -21,6 +21,8 @@ function load_page() {
 	var hotel;
 	var location_id;
 	var location;
+    var room;
+    var price;
 	var next_params = {};
 
 	for(i = 0; i < hotel_ids.length; i++) {
@@ -43,7 +45,18 @@ function load_page() {
 	        else {
 	          console.log(data.message);
 	        }
-        })
+        });
+
+        get_room(room_ids[i]).done(function (data) {
+            if(!('message' in data) ) {
+                room = data; 
+            }
+            else {
+              console.log(data.message);
+            }
+        });
+
+        price = room["price"] * parseInt((date_out - date_in) / (24 * 3600 * 1000));
 
         /*Create Card Element*/
         div = document.createElement("div");
@@ -72,6 +85,7 @@ function load_page() {
         next_params["no"] = location["no"];
         next_params["phone"] = hotel["phone"];
         next_params["email"] = hotel["email"];
+        next_params["price"] = price;
 
         /*Create Hotel Name*/
         var hotelName;
@@ -79,6 +93,13 @@ function load_page() {
         hotelName.classList.add("card-title");
         hotelName.innerHTML = hotel.name;
         cardBody.appendChild(hotelName);
+
+        var totalPrice;
+        totalPrice = document.createElement("h5");
+        totalPrice.classList.add("card-title");
+        totalPrice.innerHTML = "Total price: " + price + " lei (" + 
+                                room["price"] + " lei per night)";
+        cardBody.appendChild(totalPrice);
 
         /*Create buttons*/
         var innerDiv;
@@ -142,6 +163,15 @@ function load_page() {
 	    async: false
 			});
 	 }
+
+    function get_room(id) {
+     return $.ajax({
+        type: "POST",
+        url: './api/room/read_one.php?id=' + id,
+        dataType: 'json',
+        async: false
+            });
+     }
 
 	 function reserve(hotel_id) {
 	 	return function() {
