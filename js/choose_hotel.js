@@ -120,8 +120,9 @@ function load_page() {
         reserveBtn.classList.add("btn-danger");
         reserveBtn.onclick = reserve(hotel_ids[i]);
         reserveBtn.innerHTML = "Reserve";
+        
         innerDiv.appendChild(reserveBtn);
-        row.appendChild(innerDiv);
+        rowDiv.appendChild(innerDiv);
 
         /*Add Discover Button*/
         innerDiv = document.createElement("div");
@@ -136,7 +137,8 @@ function load_page() {
         						".html?" + encodeURIComponent(JSON.stringify(next_params));
 
         innerDiv.appendChild(discoverButton);
-        row.appendChild(innerDiv);
+        rowDiv.appendChild(innerDiv);
+        
         cardBody.appendChild(rowDiv);
 
         // var td = tr.insertCell();
