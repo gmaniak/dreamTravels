@@ -68,9 +68,10 @@ function load_page() {
         var img = document.createElement('img');
         img.src = './img/' + hotel.name.replace(/ /g, '_') + ".jpg";
         img.alt = hotel.name.replace(/ /g, '_') + ".jpg";
-        img.width = "286";
-        img.height = "180";
+        //img.width = "286";
+        //img.height = "180";
         img.onclick = reserve(hotel_ids[i]);
+        img.classList.add("card-img-top");
         div.appendChild(img);
 
         /*Create div for inner content*/
