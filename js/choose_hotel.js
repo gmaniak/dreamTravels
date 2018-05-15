@@ -111,7 +111,7 @@ function load_page() {
         /*Create buttons*/
         var innerDiv;
         innerDiv = document.createElement("div");
-        innerDiv.classList.add("col-md-6");
+        innerDiv.classList.add("col-md-4");
 
         var reserveBtn;
         reserveBtn = document.createElement("button");
@@ -126,7 +126,7 @@ function load_page() {
 
         /*Add Discover Button*/
         innerDiv = document.createElement("div");
-        innerDiv.classList.add("col-md-6");
+        innerDiv.classList.add("col-md-4");
 
         var discoverButton;
         discoverButton = document.createElement("a");
