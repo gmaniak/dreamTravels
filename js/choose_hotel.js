@@ -65,7 +65,6 @@ function load_page() {
         div = document.createElement("div");
         div.classList.add("card");
         div.classList.add("hotel-card");
-        div.classList.add("col-sm-4");
 
         /*Create Img for card*/
         var img = document.createElement('img');
@@ -97,7 +96,7 @@ function load_page() {
 
         /*Create Hotel Name*/
         var hotelName;
-        hotelName = document.createElement("h5");
+        hotelName = document.createElement("h3");
         hotelName.classList.add("card-title");
         hotelName.innerHTML = hotel.name;
         cardBody.appendChild(hotelName);
@@ -112,7 +111,7 @@ function load_page() {
         /*Create buttons*/
         var innerDiv;
         innerDiv = document.createElement("div");
-        innerDiv.classList.add("col-sm-4");
+        innerDiv.classList.add("col-md-6");
 
         var reserveBtn;
         reserveBtn = document.createElement("button");
@@ -127,7 +126,7 @@ function load_page() {
 
         /*Add Discover Button*/
         innerDiv = document.createElement("div");
-        innerDiv.classList.add("col-sm-4");
+        innerDiv.classList.add("col-md-6");
 
         var discoverButton;
         discoverButton = document.createElement("a");
@@ -141,16 +140,6 @@ function load_page() {
         rowDiv.appendChild(innerDiv);
         
         cardBody.appendChild(rowDiv);
-
-        // var td = tr.insertCell();
-        // var a = document.createElement('a');
-        // a.appendChild(document.createTextNode('Discover the hotel!'));
-        // a.title = 'Discover the hotel!';
-        // a.href = './hotel_pages/' + hotel.name.replace(/ /g, '_') + 
-        // 						".html?" + encodeURIComponent(JSON.stringify(next_params));
-        // a.target = '_blank';
-
-        // td.appendChild(a);
 
         div.appendChild(cardBody);
         /*Append card to container*/
