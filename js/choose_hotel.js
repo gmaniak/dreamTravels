@@ -49,6 +49,7 @@ function load_page() {
         div = document.createElement("div");
         div.classList.add("card");
         div.classList.add("hotel-card");
+        div.classList.add("col-sm-4");
 
         /*Create Img for card*/
         var img = document.createElement('img');
@@ -62,6 +63,7 @@ function load_page() {
         /*Create div for inner content*/
         cardBody = document.createElement("div");
         cardBody.classList.add("card-body");
+        cardBody.classList.add("row");
       	
         next_params["town"] = location["town"];
         next_params["county"] = location["county"];
@@ -81,7 +83,7 @@ function load_page() {
         /*Create buttons*/
         var innerDiv;
         innerDiv = document.createElement("div");
-        innerDiv.classList.add("col-md-4");
+        innerDiv.classList.add("col-sm-4");
 
         var reserveBtn;
         reserveBtn = document.createElement("button");
@@ -95,7 +97,7 @@ function load_page() {
 
         /*Add Discover Button*/
         innerDiv = document.createElement("div");
-        innerDiv.classList.add("col-md-4");
+        innerDiv.classList.add("col-sm-4");
 
         var discoverButton;
         discoverButton = document.createElement("a");
