@@ -41,7 +41,8 @@ if($num>0){
             "start_date" => $start_date,
             "end_date" => $end_date,
             "type" => $type,
-            "customer_name" => $customer_name
+            "customer_name" => $customer_name,
+			"total_price" => $total_price
         );
  
         array_push($reservations_arr["records"], $reservation_item);

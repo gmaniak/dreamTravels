@@ -28,6 +28,7 @@ $reservation->start_date = $data->start_date;
 $reservation->end_date = $data->end_date;
 $reservation->type = $data->type;
 $reservation->customer_name = $data->customer_name;
+$reservation->total_price = $data->total_price;
  
 // create the reservation
 if($reservation->create()){

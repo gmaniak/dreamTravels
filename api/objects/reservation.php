@@ -14,6 +14,7 @@ class Reservation{
     public $end_date;
 	public $type;
     public $customer_name;
+	public $total_price;
  
     // constructor with $db as database connection
     public function __construct($db){
@@ -50,7 +51,8 @@ class Reservation{
 					start_date=:start_date,
 					end_date=:end_date,
 					type=:type,
-					customer_name=:customer_name;";
+					customer_name=:customer_name,
+					total_price=:total_price;";
 	 
 		// prepare query
 		$stmt = $this->conn->prepare($query);
@@ -63,6 +65,8 @@ class Reservation{
 		$this->end_date=htmlspecialchars(strip_tags($this->end_date));
 		$this->type=htmlspecialchars(strip_tags($this->type));
 		$this->customer_name=htmlspecialchars(strip_tags($this->customer_name));
+		$this->total_price=htmlspecialchars(strip_tags($this->total_price));
+
 	 
 		// bind values
 		$stmt->bindParam(":hotel_id", $this->hotel_id);
@@ -72,6 +76,7 @@ class Reservation{
 		$stmt->bindParam(":end_date", $this->end_date);
 		$stmt->bindParam(":type", $this->type);
 		$stmt->bindParam(":customer_name", $this->customer_name);
+		$stmt->bindParam(":total_price", $this->total_price);
 	 
 		// execute query
 		if($stmt->execute()){
@@ -113,6 +118,8 @@ class Reservation{
 		$this->end_date = $row['end_date'];
 		$this->type = $row['type'];
 		$this->customer_name = $row['customer_name'];
+		$this->total_price = $row['total_price'];
+
 	}
 
 	// update the product
@@ -128,7 +135,8 @@ class Reservation{
 					start_date=:start_date,
 					end_date=:end_date,
 					type=:type,
-					customer_name=:customer_name
+					customer_name=:customer_name,
+					total_price=:total_price
 		        WHERE
 		            id = :id;";
 	 
@@ -143,6 +151,8 @@ class Reservation{
 		$this->end_date=htmlspecialchars(strip_tags($this->end_date));
 		$this->type=htmlspecialchars(strip_tags($this->type));
 		$this->customer_name=htmlspecialchars(strip_tags($this->customer_name));
+		$this->total_price=htmlspecialchars(strip_tags($this->total_price));
+
 	 
 		// bind values
 		$stmt->bindParam(":hotel_id", $this->hotel_id);
@@ -152,6 +162,7 @@ class Reservation{
 		$stmt->bindParam(":end_date", $this->end_date);
 		$stmt->bindParam(":type", $this->type);
 		$stmt->bindParam(":customer_name", $this->customer_name);
+		$stmt->bindParam(":total_price", $this->total_price);
 	 
 		// execute the query
 		if($stmt->execute()){

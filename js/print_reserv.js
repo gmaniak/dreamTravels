@@ -7,6 +7,7 @@ function print_res() {
   	var room_arr = [];
   	var no_pers;
 	var hotel_id;
+	var price;
 	var i = 0;
 
 	var tbl = document.createElement('table');
@@ -38,6 +39,7 @@ function print_res() {
 	      		var ok = 1;
 	        	var start = new Date(data.records[l].start_date);
 	        	var end = new Date(data.records[l].end_date);
+				var price = data.records[l].total_price;
 
 	        	if (start >= date_in && start <= date_out)
 	        		ok = 0;
@@ -57,6 +59,9 @@ function print_res() {
 			        td.appendChild(document.createTextNode("Check-in date: " + start));
 			        var td = tr.insertCell();
 			        td.appendChild(document.createTextNode("Check-out date: " + end));
+
+			        var td = tr.insertCell();
+			        td.appendChild(document.createTextNode("Price: " + price));
 
 			        var td = tr.insertCell();
 			        var button = document.createElement('button');

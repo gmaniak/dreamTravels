@@ -32,7 +32,8 @@ $reservation_arr = array(
             "start_date" => $reservation->start_date,
             "end_date" => $reservation->end_date,
             "type" => $reservation->type,
-            "customer_name" => $reservation->customer_name
+            "customer_name" => $reservation->customer_name,
+			"total_price" => $reservation->total_price
  
 );
  
