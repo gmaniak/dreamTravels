@@ -1,4 +1,6 @@
 
+var prices = [];
+
 function load_page() {
 	var params = window.location.search.substring(1).split("&");
 	var hotel_ids = [];
@@ -57,6 +59,7 @@ function load_page() {
         });
 
         price = room["price"] * parseInt((date_out - date_in) / (24 * 3600 * 1000));
+        prices.push(price);
 
         /*Create Card Element*/
         div = document.createElement("div");
@@ -68,10 +71,9 @@ function load_page() {
         var img = document.createElement('img');
         img.src = './img/' + hotel.name.replace(/ /g, '_') + ".jpg";
         img.alt = hotel.name.replace(/ /g, '_') + ".jpg";
-        //img.width = "286";
-        //img.height = "180";
+        img.width = "286";
+        img.height = "180";
         img.onclick = reserve(hotel_ids[i]);
-        img.classList.add("card-img-top");
         div.appendChild(img);
 
         /*Create div for inner content*/
@@ -86,7 +88,6 @@ function load_page() {
         next_params["no"] = location["no"];
         next_params["phone"] = hotel["phone"];
         next_params["email"] = hotel["email"];
-        next_params["price"] = price;
 
         /*Create Hotel Name*/
         var hotelName;
@@ -102,10 +103,6 @@ function load_page() {
                                 room["price"] + " lei per night)";
         cardBody.appendChild(totalPrice);
 
-        /*Create div row for buttons*/
-        var rowDiv = document.createElement("div");
-        rowDiv.classList.add("row");
-
         /*Create buttons*/
         var innerDiv;
         innerDiv = document.createElement("div");
@@ -119,7 +116,7 @@ function load_page() {
         reserveBtn.onclick = reserve(hotel_ids[i]);
         reserveBtn.innerHTML = "Reserve";
         innerDiv.appendChild(reserveBtn);
-        rowDiv.appendChild(innerDiv);
+        cardBody.appendChild(innerDiv);
 
         /*Add Discover Button*/
         innerDiv = document.createElement("div");
@@ -134,9 +131,17 @@ function load_page() {
         						".html?" + encodeURIComponent(JSON.stringify(next_params));
 
         innerDiv.appendChild(discoverButton);
-        rowDiv.appendChild(innerDiv);
-        cardBody.appendChild(rowDiv);
+        cardBody.appendChild(innerDiv);
 
+        // var td = tr.insertCell();
+        // var a = document.createElement('a');
+        // a.appendChild(document.createTextNode('Discover the hotel!'));
+        // a.title = 'Discover the hotel!';
+        // a.href = './hotel_pages/' + hotel.name.replace(/ /g, '_') + 
+        // 						".html?" + encodeURIComponent(JSON.stringify(next_params));
+        // a.target = '_blank';
+
+        // td.appendChild(a);
 
         div.appendChild(cardBody);
         /*Append card to container*/
@@ -176,7 +181,8 @@ function load_page() {
 
 	 		for (i = 2; i < params.length; i += 2) {
 				if (parseInt(params[i].split("=")[1]) == hotel_id) {
-					link_params = link_params + "&" + params[i] + "&" + params[i + 1];
+					link_params = link_params + "&" + params[i] + "&" + params[i + 1] + 
+                            "&price=" + prices[(i - 2) / 2];
 					break;
 				}
 			}
