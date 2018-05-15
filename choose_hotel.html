@@ -22,9 +22,41 @@ a:hover {
   <title>Choose a hotel</title>
 </head>
 <body onload="load_page()">
+    <!-- NavBar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Dream Travels</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<h1> Take a look at the hotels by clicking "Discover the hotel!" next 
-to each one and then choose the one you prefer! </h1>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Hotels</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav my-2 my-md-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Log in</a>
+        </li>
+      </ul> 
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <h1> Take a look at the hotels by clicking "Discover the hotel!" next 
+        to each one and then choose the one you prefer! </h1>
+  </div>
 
 <script type="text/javascript" src="./js/choose_hotel.js"></script>
 
