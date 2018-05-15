@@ -46,7 +46,7 @@ function load_page() {
         })
 
         /*Create Card Element*/
-        div = createElement("div");
+        div = document.createElement("div");
         div.classList.add("card");
         div.classList.add("hotel-card");
 
@@ -58,7 +58,7 @@ function load_page() {
         div.appendChild(img);
 
         /*Create div for inner content and add it*/
-        cardBody = createElement("div");
+        cardBody = document.createElement("div");
         div.classList.add("card-body");
       	div.appendChild(cardBody);
 
@@ -72,14 +72,14 @@ function load_page() {
 
         /*Create Hotel Name*/
         var hotelName;
-        hotelName = createElement("h5");
+        hotelName = document.createElement("h5");
         hotelName.classList.add("card-title");
         hotelName.innerHTML = hotel.name;
         cardBody.appendChild(hotelName);
 
         /*Create buttons*/
         var reserveBtn;
-        reserveBtn = createElement("button");
+        reserveBtn = document.createElement("button");
         reserveBtn.type = "btn";
         reserveBtn.classList.add("btn");
         reserveBtn.classList.add("btn-danger");
@@ -90,7 +90,7 @@ function load_page() {
         /*Add Discover Button*/
         var discoverButton;
         var href;
-        discoverButton - createElement("button");
+        discoverButton = document.createElement("button");
         discoverButton.innerHTML = "Discover Hotel";
         discoverButton.classList.add("btn-danger");
         discoverButton.classList.add("btn");
