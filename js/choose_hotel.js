@@ -54,12 +54,14 @@ function load_page() {
         var img = document.createElement('img');
         img.src = './img/' + hotel.name.replace(/ /g, '_') + ".jpg";
         img.alt = hotel.name.replace(/ /g, '_') + ".jpg";
+        img.width = "286";
+        img.height = "180";
         img.onclick = reserve(hotel_ids[i]);
         div.appendChild(img);
 
         /*Create div for inner content*/
         cardBody = document.createElement("div");
-        div.classList.add("card-body");
+        cardBody.classList.add("card-body");
       	
         next_params["town"] = location["town"];
         next_params["county"] = location["county"];
@@ -77,6 +79,10 @@ function load_page() {
         cardBody.appendChild(hotelName);
 
         /*Create buttons*/
+        var innerDiv;
+        innerDiv = document.createElement("div");
+        innerDiv.classList.add("col-md-6");
+
         var reserveBtn;
         reserveBtn = document.createElement("button");
         reserveBtn.type = "btn";
@@ -84,21 +90,23 @@ function load_page() {
         reserveBtn.classList.add("btn-danger");
         reserveBtn.onclick = reserve(hotel_ids[i]);
         reserveBtn.innerHTML = "Reserve";
-        cardBody.appendChild(reserveBtn);
+        innerDiv.appendChild(reserveBtn);
+        cardBody.appendChild(innerDiv;
 
         /*Add Discover Button*/
+        innerDiv = document.createElement("div");
+        innerDiv.classList.add("col-md-6");
+
         var discoverButton;
-        var href;
-        discoverButton = document.createElement("button");
+        discoverButton = document.createElement("a");
         discoverButton.innerHTML = "Discover Hotel";
         discoverButton.classList.add("btn-danger");
         discoverButton.classList.add("btn");
-        href = './hotel_pages/' + hotel.name.replace(/ /g, '_') + 
+        discoverButton.href = './hotel_pages/' + hotel.name.replace(/ /g, '_') + 
         						".html?" + encodeURIComponent(JSON.stringify(next_params));
 
-        discoverButton.onclick = "window.location.href='"+href+"'";
-        cardBody.appendChild(discoverButton);
-
+        innerDiv.appendChild(discoverButton);
+        cardBody.appendChild(innerDiv);
 
         // var td = tr.insertCell();
         // var a = document.createElement('a');
