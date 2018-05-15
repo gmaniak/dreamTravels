@@ -63,7 +63,7 @@ function load_page() {
         /*Create div for inner content*/
         cardBody = document.createElement("div");
         cardBody.classList.add("card-body");
-        cardBody.classList.add("row");
+        
       	
         next_params["town"] = location["town"];
         next_params["county"] = location["county"];
