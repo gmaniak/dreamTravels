@@ -97,8 +97,8 @@ function load_page() {
         cardBody.appendChild(hotelName);
 
         var totalPrice;
-        totalPrice = document.createElement("h5");
-        totalPrice.classList.add("card-title");
+        totalPrice = document.createElement("p");
+        totalPrice.classList.add("card-text");
         totalPrice.innerHTML = "Total price: " + price + " lei (" + 
                                 room["price"] + " lei per night)";
         cardBody.appendChild(totalPrice);
