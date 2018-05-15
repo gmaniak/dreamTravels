@@ -24,7 +24,6 @@ function load_page() {
 	var next_params = {};
 
 	for(i = 0; i < hotel_ids.length; i++) {
-        td.onclick = reserve(hotel_ids[i]);
         
         /*Get Data*/
         get_hotel(hotel_ids[i]).done(function (data) {
