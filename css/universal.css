@@ -64,3 +64,7 @@ body {
 	-webkit-filter: brightness(150%);
 	cursor: pointer;
 }
+
+.custom-btn {
+	width: 200px;
+}

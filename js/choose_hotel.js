@@ -90,9 +90,6 @@ function load_page() {
         next_params["phone"] = hotel["phone"];
         next_params["email"] = hotel["email"];
 
-        /*Create div for Row buttons*/
-        var rowDiv = document.createElement("div");
-        rowDiv.classList.add("row");
 
         /*Create Hotel Name*/
         var hotelName;
@@ -108,38 +105,17 @@ function load_page() {
                                 room["price"] + " lei per night)";
         cardBody.appendChild(totalPrice);
 
-        /*Create buttons*/
-/*        var innerDiv;
-        innerDiv = document.createElement("div");
-        innerDiv.classList.add("col-md-4");
-
-        var reserveBtn;
-        reserveBtn = document.createElement("button");
-        reserveBtn.type = "btn";
-        reserveBtn.classList.add("btn");
-        reserveBtn.classList.add("btn-danger");
-        reserveBtn.onclick = reserve(hotel_ids[i]);
-        reserveBtn.innerHTML = "Reserve";
-        
-        innerDiv.appendChild(reserveBtn);
-        rowDiv.appendChild(innerDiv);
-*/
-        /*Add Discover Button*/
-        innerDiv = document.createElement("div");
-        innerDiv.classList.add("col-md-4");
 
         var discoverButton;
         discoverButton = document.createElement("a");
         discoverButton.innerHTML = "Discover Hotel";
         discoverButton.classList.add("btn-danger");
         discoverButton.classList.add("btn");
+        discoverButton.classList.add("custom-btn");
         discoverButton.href = './hotel_pages/' + hotel.name.replace(/ /g, '_') + 
         						".html?" + encodeURIComponent(JSON.stringify(next_params));
-
-        innerDiv.appendChild(discoverButton);
-        rowDiv.appendChild(innerDiv);
         
-        cardBody.appendChild(rowDiv);
+        cardBody.appendChild(discoverButton);
 
         div.appendChild(cardBody);
         /*Append card to container*/
