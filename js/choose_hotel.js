@@ -75,6 +75,7 @@ function load_page() {
         // img.height = "180";
         img.onclick = reserve(hotel_ids[i]);
         img.classList.add("card-img-top");
+        img.classList.add("img-fluid");
         div.appendChild(img);
 
         /*Create div for inner content*/
