@@ -1,4 +1,3 @@
-$(document).ready(load_page);
 
 function load_page() {
 	var params = window.location.search.substring(1).split("&");
@@ -148,3 +147,5 @@ function load_page() {
 	 	}
 	 }
 }
+
+$(document).ready(load_page);
