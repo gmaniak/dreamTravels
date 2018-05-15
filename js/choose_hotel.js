@@ -91,7 +91,7 @@ function load_page() {
         reserveBtn.onclick = reserve(hotel_ids[i]);
         reserveBtn.innerHTML = "Reserve";
         innerDiv.appendChild(reserveBtn);
-        cardBody.appendChild(innerDiv;
+        cardBody.appendChild(innerDiv);
 
         /*Add Discover Button*/
         innerDiv = document.createElement("div");
