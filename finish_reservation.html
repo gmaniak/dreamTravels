@@ -49,35 +49,100 @@
   <div class="container">
     <h1> Finalize the reservation </h1>
     <form>
-      <label>First name:</label>
-      <input type="text" name="firstname"><br><br>
-      <label>Last name:</label>
-      <input type="text" name="lastname"><br><br>
-      <label>Country:</label>
-      <select name="country">
-        <option value="AS"> Austria </option>
-        <option value="BG"> Bulgaria </option>
-        <option value="RO" selected="selected"> Romania </option>
-        <option value="MD"> Moldova </option>      
-        <option value="RS"> Serbia </option>    
-        <option value="AS"> Ukraine </option>
-      </select><br><br>
-      <label>Address:</label>
-      <input type="text" name="address"><br><br>
-      <label>Phone number:</label>
-      <input type="tel" name="phone" placeholder="+40712345678"><br><br>
-      <label>Email address:</label>
-      <input type="email" name="email" placeholder="john.smith@example.com"><br><br>
-      <label>Check-in date:</label>
-      <p id="in_date"></p>
-      <label>Check-out date:</label>
-      <p id="out_date"></p>
-      <label>No. of persons:</label>
-      <p id="no_pers"></p>
-      <label>Hotel:</label>
-      <p id="hotel"></p>  
-      <label>Total price:</label>
-      <p id="price"></p>
+      <div class="row">
+        <div class="form-group">
+          <label class="col-sm-2 col-form-label">First name:</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" name="firstname">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-sm-2 col-form-label">Last name:</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" name="lastname">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label class="col-sm-2 col-form-label">Country:</label>
+          <div class="col-sm-4">
+            <select class="form-control" name="country">
+              <option value="AS"> Austria </option>
+              <option value="BG"> Bulgaria </option>
+              <option value="RO" selected="selected"> Romania </option>
+              <option value="MD"> Moldova </option>      
+              <option value="RS"> Serbia </option>    
+              <option value="AS"> Ukraine </option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-sm-2 col-form-label">Address:</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" name="address">
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="form-group">
+          <label class="col-sm-2 col-form-label">Phone number:</label>
+          <div class="col-sm-4">
+            <input type="tel" name="phone" placeholder="+40712345678" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 col-form-label">Email address:</label>
+          <div class="col-sm-4">
+            <input type="email" name="email" placeholder="john.smith@example.com" class="form-control">
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="form-group">
+          <label class="col-sm-2 col-form-label">Check-in date:</label>
+          <div class="col-sm-2">
+            <input type="text" id="in_date" readonly>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 col-form-label">Check-out date:</label>
+          <div class="col-sm-2">
+            <input type="text" id="out_date" readonly>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-sm-2 col-form-label">No. of persons:</label>
+          <div class="col-sm-2">
+            <input type="text" id="no_pers" readonly>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="form-group">
+          <label class="col-sm-2 col-form-label">Hotel:</label>
+          <div class="col-sm-2">
+            <input type="text" id="hotel" readonly>  
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-sm-2 col-form-label">Total price:</label>
+          <div class="col-sm-2">
+            <input type="text" id="price" readonly>
+          </div>
+        </div>
+      </div>
+
       <input type="button" class="btn btn-primary" onclick="submit_it()" value="Finalize!"><br>
     </form>
   </div>
