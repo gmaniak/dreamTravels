@@ -60,8 +60,7 @@ body {
 	width: 375px;
 }
 
-.hotel-card: hover {
-	opacity: 1;
+.hotel-card:hover{
+	-webkit-filter: brightness(150%);
 	cursor: pointer;
 }
-

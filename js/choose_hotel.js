@@ -109,7 +109,7 @@ function load_page() {
         cardBody.appendChild(totalPrice);
 
         /*Create buttons*/
-        var innerDiv;
+/*        var innerDiv;
         innerDiv = document.createElement("div");
         innerDiv.classList.add("col-md-4");
 
@@ -123,7 +123,7 @@ function load_page() {
         
         innerDiv.appendChild(reserveBtn);
         rowDiv.appendChild(innerDiv);
-
+*/
         /*Add Discover Button*/
         innerDiv = document.createElement("div");
         innerDiv.classList.add("col-md-4");
