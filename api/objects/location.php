@@ -131,6 +131,7 @@ class Location{
 		$this->no=htmlspecialchars(strip_tags($this->no));
 	 
 		// bind values
+		$stmt->bindParam(':id', $this->id);
 		$stmt->bindParam(":town", $this->town);
 		$stmt->bindParam(":county", $this->county);
 		$stmt->bindParam(":country", $this->country);
@@ -177,7 +178,7 @@ class Location{
 		        FROM
 		            " . $this->table_name . "
 		        WHERE
-		            name LIKE ? ;";
+		            town LIKE ? OR county LIKE ? or country LIKE ? ;";
 	 
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
@@ -188,6 +189,8 @@ class Location{
 	 
 		// bind
 		$stmt->bindParam(1, $keywords);
+		$stmt->bindParam(2, $keywords);
+		$stmt->bindParam(3, $keywords);
 	 
 		// execute query
 		$stmt->execute();
@@ -195,3 +198,4 @@ class Location{
 		return $stmt;
 	}
 }
+?>

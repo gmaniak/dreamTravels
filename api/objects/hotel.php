@@ -179,7 +179,7 @@ class Hotel{
 		        FROM
 		            " . $this->table_name . "
 		        WHERE
-		            name LIKE ? ;";
+		            name LIKE ? or location_id LIKE ? ;";
 	 
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
@@ -190,6 +190,7 @@ class Hotel{
 	 
 		// bind
 		$stmt->bindParam(1, $keywords);
+		$stmt->bindParam(2, $keywords);
 	 
 		// execute query
 		$stmt->execute();

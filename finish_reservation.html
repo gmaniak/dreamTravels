@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Necessary Bootstrap directives -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Boostrap Stylesheet -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+  <!-- Customn CSS -->
+  <link href="./css/universal.css" rel="stylesheet">
+  <link href="./css/w3-schools.css" rel="stylesheet">
+
+  <title>Finish reservation</title>
+</head>
+<body onload="fill_in()">
+<h1> Finalize the reservation </h1>
+<form>
+  <label>First name:</label>
+  <input type="text" name="firstname"><br><br>
+  <label>Last name:</label>
+  <input type="text" name="lastname"><br><br>
+  <label>Country:</label>
+  <select name="country">
+    <option value="AS"> Austria </option>
+    <option value="BG"> Bulgaria </option>
+    <option value="RO" selected="selected"> Romania </option>
+    <option value="MD"> Moldova </option>      
+    <option value="RS"> Serbia </option>    
+    <option value="AS"> Ukraine </option>
+  </select><br><br>
+  <label>Address:</label>
+  <input type="text" name="address"><br><br>
+  <label>Phone number:</label>
+  <input type="tel" name="phone" placeholder="+40712345678"><br><br>
+  <label>Email address:</label>
+  <input type="email" name="email" placeholder="john.smith@example.com"><br><br>
+  <label>Check-in date:</label>
+  <p id="in_date"></p>
+  <label>Check-out date:</label>
+  <p id="out_date"></p>
+  <label>No. of persons:</label>
+  <p id="no_pers"></p>
+  <label>Hotel:</label>
+  <p id="hotel"></p>
+  <input type="button" class="btn btn-primary" onclick="submit_it()" value="Finalize!"><br>
+</form>
+<script type="text/javascript" src="./js/finish.js"></script>
+
+  <!-- Angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <!-- jQuerry -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</body>
+</html> 

@@ -74,7 +74,7 @@ class Room{
 		        FROM
 		            " . $this->table_name . " 
 		        WHERE
-		            id = ?;";
+		            id = ? ;";
 	 
 		// prepare query statement
 		$stmt = $this->conn->prepare( $query );
@@ -132,16 +132,16 @@ class Room{
 	function delete(){
 	 
 		// delete query
-		$query = "DELETE FROM " . $this->table_name . " WHERE id = ?;";
+		$query = "DELETE FROM " . $this->table_name . " WHERE hotel_id = ?;";
 	 
 		// prepare query
 		$stmt = $this->conn->prepare($query);
 	 
 		// sanitize
-		$this->id=htmlspecialchars(strip_tags($this->id));
+		$this->hotel_id=htmlspecialchars(strip_tags($this->hotel_id));
 	 
 		// bind id of record to delete
-		$stmt->bindParam(1, $this->id);
+		$stmt->bindParam(1, $this->hotel_id);
 	 
 		// execute query
 		if($stmt->execute()){
@@ -160,7 +160,7 @@ class Room{
 		        FROM
 		            " . $this->table_name . "
 		        WHERE
-		            name LIKE ? ;";
+		            hotel_id LIKE ? ;";
 	 
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);

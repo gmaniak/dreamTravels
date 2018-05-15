@@ -193,7 +193,7 @@ class Reservation{
 		        FROM
 		            " . $this->table_name . "
 		        WHERE
-		            name LIKE ? ;";
+		            room_id LIKE ? ;";
 	 
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);

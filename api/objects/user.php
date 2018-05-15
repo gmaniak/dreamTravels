@@ -71,7 +71,7 @@ class User{
 		$stmt->bindParam(":password", $this->password);
 		$stmt->bindParam(":email", $this->email);
 		$stmt->bindParam(":phone", $this->phone);
-		$stmt->bindParam(":email", $this->email);
+		$stmt->bindParam(":type", $this->type);
 	 
 		// execute query
 		if($stmt->execute()){
@@ -127,7 +127,7 @@ class User{
 					password = :password,
 		            email = :email,
 					phone = :phone,
-		            type = :type,
+		            type = :type
 		        WHERE
 		            id = :id;";
 	 
@@ -135,6 +135,7 @@ class User{
 		$stmt = $this->conn->prepare($query);
 	 
 		// sanitize
+		$this->id=htmlspecialchars(strip_tags($this->id));
 		$this->firstname=htmlspecialchars(strip_tags($this->firstname));
 		$this->lastname=htmlspecialchars(strip_tags($this->lastname));
 		$this->username=htmlspecialchars(strip_tags($this->username));
@@ -144,13 +145,14 @@ class User{
 		$this->type=htmlspecialchars(strip_tags($this->type));
 	 
 		// bind new values
+		$stmt->bindParam(":id", $this->id);
 		$stmt->bindParam(":firstname", $this->firstname);
 		$stmt->bindParam(":lastname", $this->lastname);
 		$stmt->bindParam(":username", $this->username);
 		$stmt->bindParam(":password", $this->password);
 		$stmt->bindParam(":email", $this->email);
 		$stmt->bindParam(":phone", $this->phone);
-		$stmt->bindParam(":email", $this->email);
+		$stmt->bindParam(":type", $this->type);
 	 
 		// execute the query
 		if($stmt->execute()){
@@ -192,7 +194,7 @@ class User{
 		        FROM
 		            " . $this->table_name . "
 		        WHERE
-		            name LIKE ?;";
+		            username LIKE ?;";
 	 
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);

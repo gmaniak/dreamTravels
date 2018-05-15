@@ -14,7 +14,7 @@ include_once '../objects/room.php';
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
-echo '"message": "Unable to delete object."';
+
 // prepare room object
 $room = new Room($db);
  
@@ -22,7 +22,7 @@ $room = new Room($db);
 $data = json_decode(file_get_contents("php://input"));
  
 // set room id to be deleted
-$room->id = $data->id;
+$room->hotel_id = $data->hotel_id;
  
 // delete the room
 if($room->delete()){
