@@ -2,7 +2,7 @@ function check_reserv() {
   	var hotel = document.getElementById('hotel2').value;
   	var date_in = document.getElementById('in2').value;
 	var date_out = document.getElementById('out2').value;
-	var today = new Date();
+
 	if(document.getElementById('in2').value == ""){
 		 document.getElementById("demo2").innerHTML = "Please select a date for Check In";
 		 return;
@@ -10,10 +10,6 @@ function check_reserv() {
 	if(document.getElementById('out2').value == ""){
 		 document.getElementById("demo2").innerHTML = "Please select a date for Check Out";
 		 return;
-	}
-	if(date_in <= today){
-  		document.getElementById("demo2").innerHTML = "Please select a valid date for Check In";
-  		return;
 	}
 	if(date_in > date_out){
   		document.getElementById("demo2").innerHTML = "Check In date higher than Check Out date";

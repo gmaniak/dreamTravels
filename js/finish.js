@@ -64,12 +64,12 @@ function validateEmail(email) {
 }
 
 function validatePhone(phone) {
-    var re = /^\d{10}$/;
+    var re = /^\+?\d{10}$/;
     return re.test(phone);
 }
 
 function validateAddress(add) {
-    var re = /[^A-Za-z0-9 ]/;
+    var re = /^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/;
     return re.test(add);
 }
 

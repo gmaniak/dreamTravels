@@ -40,7 +40,7 @@ function validateEmail(email) {
 }
 
 function validatePhone(phone) {
-    var re = /^\d{10}$/;
+    var re = /^\+?\d{10}$/;
     return re.test(phone);
 }
 
@@ -120,7 +120,7 @@ function submit_it() {
             window.location.href = "./admin.html";
         }
         else 
-            document.getElementById("demo").innerHTML = data.message;
+            document.getElementById("demo").innerHTML = "User already exists";
     });
 }
 
@@ -172,7 +172,7 @@ function add_it() {
             window.location.href = "./admin.html";
         }
         else 
-            document.getElementById("demo").innerHTML = data.message;
+            document.getElementById("demo").innerHTML = "User already exists";
     });
 }
 

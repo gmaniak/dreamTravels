@@ -5,6 +5,7 @@ function store() {
   var hotel_id = params[9].split("=")[1];
   var room_id = params[10].split("=")[1];
   var price = params[11].split("=")[1];
+  price = price.slice(0, price.length - 4);
   var user_id = 1;
   var type = 2;
   var start_date = new Date(params[6].split("=")[1]);

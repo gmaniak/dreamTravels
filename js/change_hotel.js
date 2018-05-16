@@ -48,7 +48,7 @@ function validateEmail(email) {
 }
 
 function validatePhone(phone) {
-    var re = /^\d{10}$/;
+    var re = /^\+?\d{10}$/;
     return re.test(phone);
 }
 
@@ -271,7 +271,7 @@ function add_it() {
                     for (var i = 0; i < room2; i++) {
                         room_params["hotel_id"] = data2.records[0].id;
                         room_params["type"] = "2";
-                        room_params["price"] = document.getElementsByName("price1")[0].value;
+                        room_params["price"] = document.getElementsByName("price2")[0].value;
                         add_room(room_params).done(function (data3) {console.log(data3)});
                     }
 
@@ -279,14 +279,14 @@ function add_it() {
                     for (var i = 0; i < room3; i++) {
                         room_params["hotel_id"] = data2.records[0].id;
                         room_params["type"] = "3";
-                        room_params["price"] = document.getElementsByName("price1")[0].value;
+                        room_params["price"] = document.getElementsByName("price3")[0].value;
                         add_room(room_params).done(function (data3) {console.log(data3)});
                     }
 
                     for (var i = 0; i < room2; i++) {
                         room_params["hotel_id"] = data2.records[0].id;
                         room_params["type"] = "4";
-                        room_params["price"] = document.getElementsByName("price1")[0].value;
+                        room_params["price"] = document.getElementsByName("price4")[0].value;
                         add_room(room_params).done(function (data3) {console.log(data3)});
                     }
                 }
