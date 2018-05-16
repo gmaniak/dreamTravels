@@ -73,6 +73,15 @@ body {
 	width: 250px;
 }
 
+.custom-btn:hover{
+	color: yellow;
+	-webkit-filter: brightness(125%);
+}
+
+.custom-btn:active{
+        -webkit-filter: brightness(90%);
+}
+
 .custom-container{
 	text-align: center;
 }

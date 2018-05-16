@@ -18,13 +18,13 @@ function fill_in() {
   date_in = date_in.getDate() + " " + months[date_in.getMonth()] + " " + date_in.getFullYear();
   date_out = date_out.getDate() + " " + months[date_out.getMonth()] + " " + date_out.getFullYear();
 
-  document.getElementById("in_date").placeholder = date_in;
-  document.getElementById("out_date").placeholder = date_out;
-  document.getElementById("price").placeholder = price + " lei";
+  document.getElementById("in_date").innerHTML = date_in;
+  document.getElementById("out_date").innerHTML = date_out;
+  document.getElementById("price").innerHTML = price + " lei";
 
   get_no_pers(room_id).done(function (data) {
     if(!('message' in data) ) {
-       document.getElementById("no_pers").placeholder = data.type;
+       document.getElementById("no_pers").innerHTML = data.type;
     }
     else {
       console.log(data.message);
@@ -33,7 +33,7 @@ function fill_in() {
 
   get_hotel(hotel_id).done(function (data) {
     if(!('message' in data) ) {
-       document.getElementById("hotel").placeholder = data.name;
+       document.getElementById("hotel").innerHTML = data.name;
     }
     else {
       console.log(data.message);
@@ -58,6 +58,68 @@ function get_no_pers(room_id) {
     async: false
     });
 }
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+function validatePhone(phone) {
+    var re = /^\d{10}$/;
+    return re.test(phone);
+}
+
+function validateAddress(add) {
+    var re = /[^A-Za-z0-9 ]/;
+    return re.test(add);
+}
+
+function format_string(str){
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
+function validate(firstname, lastname, address, phone, email){
+  if(firstname == ""){
+         document.getElementById("demo").innerHTML = "Please type the First name";
+         return false;
+    }
+  if (/^[a-zA-Z]+$/.test(firstname) == false){
+        document.getElementById("demo").innerHTML = "Please give a valid First name";
+        return false;
+    }
+  if(lastname == ""){
+         document.getElementById("demo").innerHTML = "Please type the Last name";
+         return false;
+    }
+  if (/^[a-zA-Z]+$/.test(lastname) == false){
+        document.getElementById("demo").innerHTML = "Please give a valid Last name";
+        return false;
+    }
+  if(address == ""){
+         document.getElementById("demo").innerHTML = "Please type the Address";
+         return false;
+    }
+  if (validateAddress(address) == false){
+      document.getElementById("demo").innerHTML = "Please give a valid Address";
+      return false;
+  }
+  if(email == ""){
+         document.getElementById("demo").innerHTML = "Please type the Email";
+         return false;
+    }
+  if (validateEmail(email) == false){
+      document.getElementById("demo").innerHTML = "Please give a valid Email";
+      return false;
+  }
+  if(phone == ""){
+         document.getElementById("demo").innerHTML = "Please type the Phone";
+         return false;
+    }
+  if (validatePhone(phone) == false){
+      document.getElementById("demo").innerHTML = "Please give a valid Phone";
+      return false;
+  }
+  return true;
+}
 
 function submit_it() {
   var firstname = document.getElementsByName("firstname")[0].value;
@@ -67,12 +129,18 @@ function submit_it() {
   var address = document.getElementsByName("address")[0].value;
   var phone = document.getElementsByName("phone")[0].value;
   var email = document.getElementsByName("email")[0].value;
-  var in_date = document.getElementById("in_date").placeholder;
-  var out_date = document.getElementById("out_date").placeholder;
-  var no_pers = document.getElementById("no_pers").placeholder;
+  var in_date = document.getElementById("in_date").innerHTML;
+  var out_date = document.getElementById("out_date").innerHTML;
+  var no_pers = document.getElementById("no_pers").innerHTML;
   var hotel = window.location.search.substring(1).split("&")[2].split("=")[1];
   var room = window.location.search.substring(1).split("&")[3].split("=")[1];
-  var price = document.getElementById("price").placeholder;
+  var price = document.getElementById("price").innerHTML;
+
+  if(validate(firstname, lastname, address, phone, email) == false)
+    return;
+
+  firstname = format_string(firstname);
+  lastname = format_string(lastname);
 
   var params = "firstname=" + firstname + "&lastname=" + lastname + 
     "&country=" + country + "&address=" + address + "&phone=" +

@@ -114,9 +114,9 @@ function load_page() {
         discoverButton.classList.add("btn");
         discoverButton.classList.add("custom-btn");
         discoverButton.href = './hotel_pages/' + hotel.name.replace(/ /g, '_') + 
-        						".html?" + encodeURIComponent(JSON.stringify(next_params));
-        
-        discoverContainer.appendChild(discoverButton);
+        						".html?" + encodeURIComponent(JSON.stringify(next_params));     
+        discoverButton.target = '_self';
+	discoverContainer.appendChild(discoverButton);
         cardBody.appendChild(discoverContainer);
 
         div.appendChild(cardBody);

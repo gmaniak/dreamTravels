@@ -42,6 +42,140 @@ function write() {
     }
 }
 
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+function validatePhone(phone) {
+    var re = /^\d{10}$/;
+    return re.test(phone);
+}
+
+function isNormalInteger(str) {
+    return /^\+?(0|[1-9]\d*)$/.test(str);
+}
+
+function validate1(name, email, phone){
+    if(name == ""){
+         document.getElementById("demo").innerHTML = "Please type the hotel's name";
+         return false;
+    }
+    if (/^[a-zA-Z]+$/.test(name) == false){
+        document.getElementById("demo").innerHTML = "Please give a valid hotel name";
+        return false;
+    }
+    if(email == ""){
+         document.getElementById("demo").innerHTML = "Please type the hotel's email";
+         return false;
+    }
+    if(validateEmail(email) == false){
+         document.getElementById("demo").innerHTML = "Please type a valid email";
+         return false;
+    }
+    if(phone == ""){
+         document.getElementById("demo").innerHTML = "Please type the hotel's phone number";
+         return false;
+    }
+    if(validatePhone(phone) == false){
+         document.getElementById("demo").innerHTML = "Please type a valid phone number";
+         return false;
+    }
+    return true;
+}
+
+function validate(name, email, phone, room1, room2, room3, room4, price1, price2, price3, price4){
+    if(name == ""){
+         document.getElementById("demo").innerHTML = "Please type the hotel's name";
+         return false;
+    }
+    if (/^[a-zA-Z]+$/.test(name) == false){
+        document.getElementById("demo").innerHTML = "Please give a valid hotel name";
+        return false;
+    }
+    if(email == ""){
+         document.getElementById("demo").innerHTML = "Please type the hotel's email";
+         return false;
+    }
+    if(validateEmail(email) == false){
+         document.getElementById("demo").innerHTML = "Please type a valid email";
+         return false;
+    }
+    if(phone == ""){
+         document.getElementById("demo").innerHTML = "Please type the hotel's phone number";
+         return false;
+    }
+    if(validatePhone(phone) == false){
+         document.getElementById("demo").innerHTML = "Please type a valid phone number";
+         return false;
+    }
+    if(room1 == ""){
+         document.getElementById("demo").innerHTML = "Please type the hotel's number of rooms for 1 person";
+         return false;
+    }
+    if(isNormalInteger(room1) == false){
+         document.getElementById("demo").innerHTML = "Please type a valid number of rooms for 1 person";
+         return false;
+    }
+    if(room2 == ""){
+         document.getElementById("demo").innerHTML = "Please type the hotel's number of rooms for 2 persons";
+         return false;
+    }
+    if(isNormalInteger(room2) == false){
+         document.getElementById("demo").innerHTML = "Please type a valid number of rooms for 2 persons";
+         return false;
+    }
+    if(room3 == ""){
+         document.getElementById("demo").innerHTML = "Please type the hotel's number of rooms for 3 persons";
+         return false;
+    }
+    if(isNormalInteger(room3) == false){
+         document.getElementById("demo").innerHTML = "Please type a valid number of rooms for 3 persons";
+         return false;
+    }
+    if(room4 == ""){
+         document.getElementById("demo").innerHTML = "Please type the hotel's number of rooms for 4 persons";
+         return false;
+    }
+    if(isNormalInteger(room4) == false){
+         document.getElementById("demo").innerHTML = "Please type a valid number of rooms for 4 persons";
+         return false;
+    }
+    if(price1 == ""){
+         document.getElementById("demo").innerHTML = "Please type the price for 1 person room";
+         return false;
+    }
+    if(isNormalInteger(price1) == false){
+         document.getElementById("demo").innerHTML = "Please type a valid price for 1 person room";
+         return false;
+    }
+    if(price2 == ""){
+         document.getElementById("demo").innerHTML = "Please type the price for 2 persons room";
+         return false;
+    }
+    if(isNormalInteger(price2) == false){
+         document.getElementById("demo").innerHTML = "Please type a valid price for 2 persons room";
+         return false;
+    }
+    if(price3 == ""){
+         document.getElementById("demo").innerHTML = "Please type the price for 3 persons room";
+         return false;
+    }
+    if(isNormalInteger(price3) == false){
+         document.getElementById("demo").innerHTML = "Please type a valid price for 3 persons room";
+         return false;
+    }
+    if(price4 == ""){
+         document.getElementById("demo").innerHTML = "Please type the price for 4 persons room";
+         return false;
+    }
+    if(isNormalInteger(price4) == false){
+         document.getElementById("demo").innerHTML = "Please type a valid price for 4 persons room";
+         return false;
+    }
+    return true;
+}
+
 function submit_it() {
     var params = {};
     var par = decodeURIComponent(window.location.search).substring(1).split(",");
@@ -57,6 +191,11 @@ function submit_it() {
     params["email"] = document.getElementsByName("email")[0].value;
     params["phone"] = document.getElementsByName("phone")[0].value;
     params["no_rooms"] = parseInt(no_rooms.substring(1, no_rooms.length - 2));
+
+    if(validate1(params["name"], params["email"], params["phone"]) == false)
+        return;
+
+    params["name"] = params["name"].charAt(0).toUpperCase() + params["name"].slice(1).toLowerCase();
 
     change_it(params).done(function (data) {
         if (data.message == "hotel was updated." ) {
@@ -90,13 +229,29 @@ function add_it() {
     params["location_id"] = location;
     params["email"] = document.getElementsByName("email")[0].value;
     params["phone"] = document.getElementsByName("phone")[0].value;
+    var r1 = document.getElementsByName("no_rooms1")[0].value;
+    var r2 = document.getElementsByName("no_rooms2")[0].value;
+    var r3 = document.getElementsByName("no_rooms3")[0].value;
+    var r4 = document.getElementsByName("no_rooms4")[0].value;
+    var p1 = document.getElementsByName("price1")[0].value;
+    var p2 = document.getElementsByName("price2")[0].value;
+    var p3 = document.getElementsByName("price3")[0].value;
+    var p4 = document.getElementsByName("price4")[0].value;
 
-    var room1 = parseInt(document.getElementsByName("no_rooms1")[0].value);
-    var room2 = parseInt(document.getElementsByName("no_rooms2")[0].value);
-    var room3 = parseInt(document.getElementsByName("no_rooms3")[0].value);
-    var room4 = parseInt(document.getElementsByName("no_rooms4")[0].value);
+    if(validate(params["name"], params["email"], params["phone"],
+        r1, r2, r3, r4, p1, p2, p3, p4) == false)
+        return;
+
+    params["name"] = params["name"].charAt(0).toUpperCase() + params["name"].slice(1).toLowerCase();
+
+    var room1 = parseInt(r1);
+    var room2 = parseInt(r2);
+    var room3 = parseInt(r3);
+    var room4 = parseInt(r4);
 
     params["no_rooms"] = room1 + room2 + room3 + room4;
+
+
 
     add_hotel(params).done(function (data) {
         if (data.message == "hotel was created." ) {

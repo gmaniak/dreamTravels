@@ -8,6 +8,7 @@ function set_preferences() {
 	var date_out = new Date(document.getElementById('out').value);
   	var params = "?";
   	var radios = document.getElementsByName('no');
+	var today = new Date();	
 	
   	if(document.getElementById('in').value == ""){
 		 document.getElementById("demo3").innerHTML = "Please select a date for Check In";
@@ -16,6 +17,10 @@ function set_preferences() {
 	if(document.getElementById('out').value == ""){
 		 document.getElementById("demo3").innerHTML = "Please select a date for Check Out";
 		 return;
+	}
+	if(date_in <= today){
+  		document.getElementById("demo3").innerHTML = "Please select a valid date for Check In";
+  		return;
 	}
 	if(date_in > date_out){
   		document.getElementById("demo3").innerHTML = "Check In date higher than Check Out date";

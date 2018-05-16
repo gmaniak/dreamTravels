@@ -30,6 +30,64 @@ function print() {
     }
 }
 
+function format_string(str){
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+function validatePhone(phone) {
+    var re = /^\d{10}$/;
+    return re.test(phone);
+}
+
+function validate(firstname, lastname, username, password, email, phone){
+    if(firstname == ""){
+         document.getElementById("demo").innerHTML = "Please type the user's First name";
+         return false;
+    }
+    if (/^[a-zA-Z]+$/.test(firstname) == false){
+        document.getElementById("demo").innerHTML = "Please give a valid First name";
+        return false;
+    }
+    if(lastname == ""){
+         document.getElementById("demo").innerHTML = "Please type the user's Last name";
+         return false;
+    }
+    if (/^[a-zA-Z]+$/.test(lastname) == false){
+        document.getElementById("demo").innerHTML = "Please give a valid Last name";
+        return false;
+    }
+    if(username == ""){
+         document.getElementById("demo").innerHTML = "Please type the User name";
+         return false;
+    }
+    if(password == ""){
+         document.getElementById("demo").innerHTML = "Please type the user's password";
+         return false;
+    }
+    if(email == ""){
+         document.getElementById("demo").innerHTML = "Please type the user's email";
+         return false;
+    }
+    if(validateEmail(email) == false){
+         document.getElementById("demo").innerHTML = "Please type a valid email";
+         return false;
+    }
+    if(phone == ""){
+         document.getElementById("demo").innerHTML = "Please type the user's phone number";
+         return false;
+    }
+    if(validatePhone(phone) == false){
+         document.getElementById("demo").innerHTML = "Please type a valid phone number";
+         return false;
+    }
+    return true;
+}
+
 function submit_it() {
     var params = {};
     var par = decodeURIComponent(window.location.search).substring(1).split(",");
@@ -43,6 +101,12 @@ function submit_it() {
     params["email"] = document.getElementsByName("email")[0].value;
     params["phone"] = document.getElementsByName("phone")[0].value;
     radios = document.getElementsByName("type");
+
+    if(validate(params["firstname"], params["lastname"], params["username"], params["password"], params["email"], params["phone"]) == false)
+        return;
+
+    params["firstname"] = format_string(params["firstname"]);
+    params["lastname"] = format_string(params["lastname"]);
 
     for (j in radios)
      if (radios[j].checked) {
@@ -82,11 +146,25 @@ function add_it() {
     params["phone"] = document.getElementsByName("phone")[0].value;
     radios = document.getElementsByName("type");
 
+    if(validate(params["firstname"], params["lastname"], params["username"], params["password"], params["email"], params["phone"]) == false)
+        return;
+    
+    params["firstname"] = format_string(params["firstname"]);
+    params["lastname"] = format_string(params["lastname"]);
+
+    var ok = 0;
+
     for (j in radios)
      if (radios[j].checked) {
       params["type"] = radios[j].value;
+      ok = 1;
       break;
      }
+
+    if(ok == 0){
+        document.getElementById("demo").innerHTML = "Please select user's type";
+        return;
+    }
 
     add_user(params).done(function (data) {
         if (data.message == "user was created." ) {
