@@ -1,5 +1,4 @@
 function print() {
-    var tbl = document.createElement('table');
     var body = document.getElementById("table_body");
     var loc;
 

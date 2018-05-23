@@ -10,9 +10,7 @@ function print_res() {
 	var price;
 	var i = 0;
 
-	var tbl = document.createElement('table');
-	tbl.id = "my_table"
-	var body = document.body;
+	var body = document.getElementById("table_body");
 
   	get_hotel_id(hotel).done(function (data) {
 	      if(!('message' in data) ) {
@@ -48,26 +46,30 @@ function print_res() {
 	        		ok = 0;
 
 	        	if (ok == 0) {
-	        		var tr = tbl.insertRow();
+	        		var tr = document.createElement("tr");
 			        var td = tr.insertCell();
-			        td.appendChild(document.createTextNode("Room ID: " + room_arr[k]));        
+			        td.appendChild(document.createTextNode(room_arr[k]));        
 			        var td = tr.insertCell();
-			        td.appendChild(document.createTextNode("Customer name: " + data.records[l].customer_name));
+			        td.appendChild(document.createTextNode(data.records[l].customer_name));
 			        var td = tr.insertCell();
-			        td.appendChild(document.createTextNode("Reservation ID: " + data.records[l].id));
+			        td.appendChild(document.createTextNode(data.records[l].id));
 			        var td = tr.insertCell();
-			        td.appendChild(document.createTextNode("Check-in date: " + start));
+			        td.appendChild(document.createTextNode(start));
 			        var td = tr.insertCell();
-			        td.appendChild(document.createTextNode("Check-out date: " + end));
+			        td.appendChild(document.createTextNode(end));
 
 			        var td = tr.insertCell();
-			        td.appendChild(document.createTextNode("Price: " + price));
+			        td.appendChild(document.createTextNode(price));
 
 			        var td = tr.insertCell();
 			        var button = document.createElement('button');
 			        button.appendChild(document.createTextNode('Delete'));
 			        button.onclick = delete_res(i, data.records[l].id);
+			        button.classList.add("btn");
+                	button.classList.add("btn-primary");
 			        td.appendChild(button);
+
+			        body.appendChild(tr);
 
 			        i = i + 1;
 	        	}
@@ -76,7 +78,6 @@ function print_res() {
 	      });
 	    }
      });
-    body.appendChild(tbl);
 }
 
 function delete_res(row, id) {
