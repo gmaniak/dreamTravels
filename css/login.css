@@ -16,6 +16,14 @@ body, html {
     padding: 40px 40px;
 }
 
+button: {
+    // The CSS selector indicates the button
+    selector: '[type="submit"]:not([formnovalidate])',
+
+    // The CSS class which is added to the button when it is disabled
+    disabled: ''
+}
+
 .btn {
     font-weight: 700;
     height: 36px;
