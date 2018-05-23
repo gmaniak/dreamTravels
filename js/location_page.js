@@ -1,45 +1,49 @@
 function print() {
     var tbl = document.createElement('table');
-    tbl.id = "my_table";
-    var body = document.body;
+    var body = document.getElementById("table_body");
     var loc;
 
 	get_locations().done(function (data) {
       if(!('message' in data) ) {
         for (j in data.records) {
             loc = data.records[j];
-            var tr = tbl.insertRow();
+            var tr = document.createElement("tr");
             var td = tr.insertCell();
-            td.appendChild(document.createTextNode("Location ID: " + loc["id"]));
+            td.appendChild(document.createTextNode(loc["id"]));
 
             var td = tr.insertCell();
-            td.appendChild(document.createTextNode("Town: " + loc["town"]));
+            td.appendChild(document.createTextNode(loc["town"]));
 
             var td = tr.insertCell();
-            td.appendChild(document.createTextNode("County: " + loc["county"]));
+            td.appendChild(document.createTextNode(loc["county"]));
 
             var td = tr.insertCell();
-            td.appendChild(document.createTextNode("Country: " + loc["country"]));
+            td.appendChild(document.createTextNode(loc["country"]));
 
             var td = tr.insertCell();
-            td.appendChild(document.createTextNode("Street: " + loc["street"]));
+            td.appendChild(document.createTextNode(loc["street"]));
 
             var td = tr.insertCell();
-            td.appendChild(document.createTextNode("No.: " + loc["no"]));
+            td.appendChild(document.createTextNode(loc["no"]));
 
             var td = tr.insertCell();
             var button = document.createElement('button');
             button.appendChild(document.createTextNode('Delete'));
             button.onclick = delete_loc(j, loc["id"]);
+            button.classList.add("btn");
+            button.classList.add("btn-primary");
             td.appendChild(button);
 
-            var td = tr.insertCell();
             var button = document.createElement('button');
             button.appendChild(document.createTextNode('Change'));
             button.onclick = change_loc(loc);
+            button.classList.add("btn");
+            button.classList.add("btn-primary");
             td.appendChild(button);
+
+            body.appendChild(tr);
         }
-        body.appendChild(tbl);
+        
       }
       else {
           console.log(data.message);
