@@ -16,6 +16,36 @@
   <title>Add location</title>
 </head>
 <body>
+    <!-- NavBar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Dream Travels</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="./admin.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Hotels</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav my-2 my-md-0">
+        <li class="nav-item">
+          <a class="nav-link" href="./admin_login.html">Log in</a>
+        </li>
+      </ul> 
+    </div>
+  </nav>
+  <div class="container">
 <p id="demo"></p>
 <form>
 <label>Town:</label>
@@ -30,7 +60,7 @@
   <input type="text" name="no"><br><br>
   <input type="button" class="btn btn-primary" onclick="add_it()" value="Add location"><br>
 </form>
-
+</div>
   <script type="text/javascript" src="./js/change_loc.js"></script>
 
   <!-- Angular -->
