@@ -12,19 +12,65 @@
   <!-- Customn CSS -->
   <link href="./css/universal.css" rel="stylesheet">
   <link href="./css/w3-schools.css" rel="stylesheet">
+  <link href="./css/login.css" rel="stylesheet">
 
   <title>Login</title>
 </head>
 <body>
-<h1> Login Administrator or Receptionist </h1>
-<form>
-<label> Username </label> <br>
-<input type="text" name="username"><br><br>
-<label> Password </label> <br>
-<input type="password" name="password"><br><br>
-<input type="button" class="btn btn-primary" onclick="submit_it()" value="Log In"><br>
-</form>
-<p id="error"></p>
+    <!-- NavBar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Dream Travels</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Hotels</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav my-2 my-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" href="./admin_login.html">Log in</a>
+        </li>
+      </ul> 
+    </div>
+  </nav>
+
+<div class="container">
+  <h1> Login Administrator or Receptionist </h1>
+<!--   <form>
+  <label> Username </label> <br>
+  <input type="text" name="username"><br><br>
+  <label> Password </label> <br>
+  <input type="password" name="password"><br><br>
+  <input type="button" class="btn btn-primary" onclick="submit_it()" value="Log In"><br>
+  </form>
+  <p id="error"></p>
+</div> -->
+
+<div class="card card-container">
+    <img id="profile-img" class="profile-img-card" src="./img/avatar_2x.png" />
+    <p id="profile-name" class="profile-name-card"></p>
+    <form class="form-signin">
+        <span id="reauth-email" class="reauth-email"></span>
+        <input type="email" id="username" name="username" class="form-control" placeholder="Email address" required autofocus>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+        <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" onclick="submit_it()">Sign in</button>
+    </form><!-- /form -->
+    <p id="error"></p>           
+</div><!-- /card-container -->
+
 <script type="text/javascript" src="./js/login.js"></script>
 
   <!-- Angular -->
