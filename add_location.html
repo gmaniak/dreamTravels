@@ -48,17 +48,32 @@
   <div class="container">
 <p id="demo"></p>
 <form>
-<label>Town:</label>
-  <input type="text" name="town"><br><br>
-  <label>County:</label>
-  <input type="text" name="county"><br><br>
-  <label>Country:</label>
-  <input type="text" name="country"><br><br>
-  <label>Street:</label>
-  <input type="text" name="street"><br><br>
-  <label>No.:</label>
-  <input type="text" name="no"><br><br>
-  <input type="button" class="btn btn-primary" onclick="add_it()" value="Add location"><br>
+      <div class="form-group">
+      <label>Town:</label>
+      <input type="text" name="town" class="form-control">
+      </div>
+
+      <div class="form-group">  
+      <label>County:</label>
+      <input type="text" name="county" class="form-control">
+      </div>
+
+      <div class="form-group">
+      <label>Country:</label>
+      <input type="text" name="country" class="form-control">
+      </div>
+
+      <div class="form-group">
+      <label>Street:</label>
+      <input type="text" name="street" class="form-control">
+      </div>
+
+      <div class="form-group">
+      <label>No.:</label>
+      <input type="text" name="no" class="form-control">
+      </div>
+
+      <input type="button" class="btn btn-primary" onclick="add_it()" value="Add location">
 </form>
 </div>
   <script type="text/javascript" src="./js/change_loc.js"></script>
