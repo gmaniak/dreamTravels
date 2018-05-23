@@ -1,7 +1,7 @@
 function print() {
 	var tbl = document.createElement('table');
 	tbl.id = "my_table";
-	var body = document.body;
+	var body = document.getElementById("table_body");
 	var hotel;
 	var location;
 
@@ -10,12 +10,12 @@ function print() {
         for (i in data.records) {
         	hotel = data.records[i];
 
-	        var tr = tbl.insertRow();
+	        var tr = document.createElement('tr');
 	        var td = tr.insertCell();
-	        td.appendChild(document.createTextNode("Hotel ID: " + hotel["id"]));
+	        td.appendChild(document.createTextNode( hotel["id"]));
 
 	        var td = tr.insertCell();
-	        td.appendChild(document.createTextNode("Name: " + hotel["name"]));
+	        td.appendChild(document.createTextNode(hotel["name"]));
 
 	        get_location(hotel["location_id"]).done(function (data) {
 	        	if(!('message' in data) ) {
@@ -27,28 +27,33 @@ function print() {
 	        }); 
 
 	        var td = tr.insertCell();
-	        td.appendChild(document.createTextNode("Location: " + location));
+	        td.appendChild(document.createTextNode(location));
 
 	        var td = tr.insertCell();
-	        td.appendChild(document.createTextNode("Email: " + hotel["email"]));
+	        td.appendChild(document.createTextNode(hotel["email"]));
 
 	        var td = tr.insertCell();
-	        td.appendChild(document.createTextNode("Phone: " + hotel["phone"]));
+	        td.appendChild(document.createTextNode(hotel["phone"]));
 
 	        var td = tr.insertCell();
-	        td.appendChild(document.createTextNode("No. rooms: " + hotel["no_rooms"]));
+	        td.appendChild(document.createTextNode(hotel["no_rooms"]));
 
 	        var td = tr.insertCell();
 	        var button = document.createElement('button');
 	        button.appendChild(document.createTextNode('Delete'));
 	        button.onclick = delete_hotel(i, hotel["id"]);
+	        button.classList.add("btn");
+	        button.classList.add("btn-primary");
 	        td.appendChild(button);
 
-	        var td = tr.insertCell();
 	        var button = document.createElement('button');
 	        button.appendChild(document.createTextNode('Change'));
 	        button.onclick = change_hotel(JSON.stringify(hotel));
+	        button.classList.add("btn");
+	        button.classList.add("btn-primary");
 	        td.appendChild(button);
+
+	        body.appendChild(tr);
 	    }
 	  }
 	    else {
@@ -56,7 +61,6 @@ function print() {
 	    }
 	 });
 
-    body.appendChild(tbl);
 }
 
 function delete_hotel(row, id) {
