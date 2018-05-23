@@ -1,7 +1,6 @@
 function print() {
 	var tbl = document.createElement('table');
-	tbl.id = "my_table";
-	var body = document.body;
+	var body = document.getElementById("table_body");
 	var user;
 
 
@@ -10,51 +9,55 @@ function print() {
         for (i in data.records) {
                 user = data.records[i];
 
-                var tr = tbl.insertRow();
+                var tr = document.createElement("tr");
                 var td = tr.insertCell();
-                td.appendChild(document.createTextNode("User ID: " + user["id"]));
+                td.appendChild(document.createTextNode(user["id"]));
 
                 var td = tr.insertCell();
-                td.appendChild(document.createTextNode("Username: " + user["username"]));
+                td.appendChild(document.createTextNode(user["username"]));
 
                 var td = tr.insertCell();
-                td.appendChild(document.createTextNode("Firstname: " + user["firstname"]));
+                td.appendChild(document.createTextNode(user["firstname"]));
 
                 var td = tr.insertCell();
-                td.appendChild(document.createTextNode("Lastname: " + user["lastname"]));
+                td.appendChild(document.createTextNode(user["lastname"]));
 
                 var td = tr.insertCell();
-                td.appendChild(document.createTextNode("Email: " + user["email"]));
+                td.appendChild(document.createTextNode(user["email"]));
 
                 var td = tr.insertCell();
-                td.appendChild(document.createTextNode("Phone: " + user["phone"]));
+                td.appendChild(document.createTextNode(user["phone"]));
 
                 var td = tr.insertCell();
                 if (parseInt(user["type"]) == 1) {
-                    td.appendChild(document.createTextNode("Type: administrator"));
+                    td.appendChild(document.createTextNode("administrator"));
                 }
                 else {
-                    td.appendChild(document.createTextNode("Type: receptionist"));
+                    td.appendChild(document.createTextNode("receptionist"));
                 }
 
                 var td = tr.insertCell();
                 var button = document.createElement('button');
                 button.appendChild(document.createTextNode('Delete'));
                 button.onclick = delete_user(i, user["id"]);
+                button.classList.add("btn");
+                button.classList.add("btn-primary");
                 td.appendChild(button);
 
-                var td = tr.insertCell();
                 var button = document.createElement('button');
                 button.appendChild(document.createTextNode('Change'));
                 button.onclick = change_user(JSON.stringify(user));
+                button.classList.add("btn");
+                button.classList.add("btn-primary");
                 td.appendChild(button);
+
+                body.appendChild(tr);
             }
          }
         else {
           console.log(data.message);
         }
       });
-    body.appendChild(tbl);
 }
 
 function delete_user(row, id) {
