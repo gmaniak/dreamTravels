@@ -17,7 +17,7 @@
 </head>
 <body>
   
-  <!-- NavBar -->
+    <!-- NavBar -->
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Dream Travels</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,16 +41,16 @@
       </ul>
       <ul class="navbar-nav my-2 my-md-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">Book now!</a>
+          <a class="nav-link" href="./admin_login.html">Log in</a>
         </li>
       </ul> 
     </div>
   </nav>
   <div class="container">
     
-    <!-- Reservation Main Window -->
+   <!-- Reservation Main Window -->
     <div class="row grid-container header-container">
-      <img class="bg-img" src="./img/hotel.jpg" alt="The Hotel"> 
+      <img class="bg-img rounded" " src="./img/hotel.jpg" alt="The Hotel"> 
       
       <!-- Content of image -->
       <div class="reservation-container col-md-6 bg-white">
@@ -64,26 +64,26 @@
             
             <form class="form-custom grid-container">
               <div class="row">
-                <div class="form-group col-md-6">
-                  <label>Check in: </label>
+                <div class="form-group col-md-4">
+                  <label for="in">Check in: </label>
                   <input type="date" id="in">
                 </div>
-                <div class="form-group col-md-6">
-                  <label>Check Out: </label>
+                <div class="form-group col-md-4">
+                  <label for="out">Check Out: </label>
                   <input type="date" id="out">
                 </div>
               </div>
 
               <div class="row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                   <label>No. of persons: </label><br>
                   <input type="radio" name="no" value="1"> 1 <br>
                   <input type="radio" name="no" value="2"> 2 <br>
                   <input type="radio" name="no" value="3"> 3 <br>
                   <input type="radio" name="no" value="4"> 4 <br>
                 </div>
-                <div class="form-group col-md-6">
-                  <label>Location: </label>
+                <div class="form-group col-md-4">
+                  <label for="location">Location: </label>
                   <input type="text" id="location">
                 </div>
               </div>
@@ -92,9 +92,9 @@
                 <input type="button" class="btn btn-primary" onclick="set_preferences()" value="Search"> 
                 </div>
               </div>
-
             </form>
-          		<div id="demo3"></div>
+            
+              <div id="demo3"></div>
           </div>
         </div>
       </div>       
